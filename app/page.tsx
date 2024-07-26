@@ -1,112 +1,133 @@
+import { Button } from "@/components/ui/button";
+import { BrainCogIcon, EyeIcon, GlobeIcon, MonitorSmartphoneIcon, ServerCogIcon, ZapIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+
+const features = [
+  {
+    id: 1,
+    name: "Store your PDF Documents",
+    description: "Keep all your PDF files securely stored and easily accessible anytime, anywhere.",
+    icon: GlobeIcon
+  },
+  {
+    id: 2, 
+    name: "Blazing Fast Responses",
+    description:
+      "Experience lighting-fast answers to your queries, ensuring you get the information you need instantly.",
+    icon: ZapIcon
+  },
+  {
+    id: 3,
+    name: "Chat Memorisation",
+    description:
+      "Our intelligent chatbot remembers previous interactions, providing a seamless and personalized experience.",
+    icon: BrainCogIcon
+  },
+  {
+    id: 4,
+    name: "Interactive PDF Viewer",
+    description:
+      "Engage with your PDF's like never before using an intuitive and interactive viewer.",
+    icon: EyeIcon
+  },
+  {
+    id: 5,
+    name: "Cloud Backup",
+    description:
+      "Rest assured knowing your documents are safely backed up on the cloud, protected from loss or damage.",
+    icon: ServerCogIcon
+  },
+  {
+    id: 6,
+    name: "Responsive across Devices",
+    description:
+      "Access and chat with your PDF's seamlessly on any device, whether it's your desktop, tablet, or smartphone.",
+    icon: MonitorSmartphoneIcon
+  },
+]
+
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className=" flex-1 relative overflow-scroll p-2 lg:p-5 bg-gradient-to-br from-pink-400 to-[#c18bc3]">
+      <div className="bg-gray-900 py-24 sm:py-32 rounded-md drop-shadow-xl">
+        <div className="flex flex-col justify-center items-center mx-auto max-w-7xl px-6 lg:px-8">
+          <div
+            className="absolute inset-x-0 top-48 -z-10 transform-gpu overflow-hidden blur-3xl"
+            aria-hidden="true"
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+          <div
+            className='relative left-[calc(50%-11rem)] aspect-[1155/678] w-[54.125rem]
+            -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc]
+             opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] -z-20'
+             style={{
+              clipPath:
+                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1%, 97.7%, 74.1% 44.14%]"
+             }}
+          />
+          </div>
+          <div className="mx-auto z-20 max-w-2xl sm:text-center">
+            <h2 className="text-base font-semibold leading-7 text-indigo-600">
+              Your Interactive Document Companion
+            </h2>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-400 sm:text-6xl">
+              Transform Your PDFs into Interactive Conversations
+            </p>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+            <p className="mt-6 text-lg leading-6 text-gray-400">
+              Introducing {" "}
+              <span className="font-bold text-indigo-600">Chat with PDF.</span>
+              <br />
+              <br /> Upload your document, and our chatbot will answer questions, summarize content, and answer all your Qs.
+              Ideal for everyone, <span className="text-indigo-600">Chat with PDF</span>{" "}
+              turns static documents into {" "}
+              <span className="font-bold">dynamic conversations</span>,
+              enhancing productivity 10x fold effortlessly. 
+            </p>
+          </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <Button asChild className="mt-10 bg-gradient-to-r from-gray-400 to-indigo-400">
+            <Link href="/sign-in">Get Started</Link>
+          </Button>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+          
+          </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+          <div className="relative overflow-hidden pt-16">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+              <Image
+                alt="App screenshot"
+                src="https://i.imgur.com/VciRSTI.jpeg"
+                width={2432}
+                height={1442}
+                className="mb-[-0%] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
+              />
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+              <div aria-hidden="true" className="relative">
+                <div className="absolute bottom-0 -inset-x-32 bg-gradient-to-t from-gray-900/95 pt-[5%]"/>
+              </div>
+            </div>
+          </div>
+
+          <div className="px-3 pt-3">
+            <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10
+            text-base leading-7 text-gray-400 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8">
+              {features.map(feature => (
+                <div key={feature.id} className="relative pl-9">
+                  <dt className="inline font-semibold text-gray-900">
+                    <feature.icon
+                      aria-hidden="true"
+                      className="absolute left-1 top-1 h-5 w-5 text-indigo-600"
+                    />
+                  </dt>
+
+                  <dd>{feature.description}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        
       </div>
     </main>
   );
