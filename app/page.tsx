@@ -1,4 +1,7 @@
+"use client"
 import { Button } from "@/components/ui/button";
+import { useUser } from "@clerk/nextjs";
+// import { auth } from "@clerk/nextjs/server";
 import { BrainCogIcon, EyeIcon, GlobeIcon, MonitorSmartphoneIcon, ServerCogIcon, ZapIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -49,17 +52,21 @@ const features = [
 
 
 export default function Home() {
+  const { user } = useUser();
+  // auth().protect();
+
+  // const { userId } = await auth();
   return (
-    <main className=" flex-1 relative overflow-scroll p-2 lg:p-5 bg-gradient-to-br from-pink-400 to-[#c18bc3]">
-      <div className="bg-gray-900 py-24 sm:py-32 rounded-md drop-shadow-xl">
+    <main className=" flex-1 relative overflow-scroll p-2 lg:p-5 bg-gradient-to-br from-white to-[#c18bc3]">
+      <div className=" bg-gradient-to-b  from-gray-200 to-orange-200 py-24 sm:py-32 rounded-md drop-shadow-xl">
         <div className="flex flex-col justify-center items-center mx-auto max-w-7xl px-6 lg:px-8">
           <div
             className="absolute inset-x-0 top-48 -z-10 transform-gpu overflow-hidden blur-3xl"
             aria-hidden="true"
           >
           <div
-            className='relative left-[calc(50%-11rem)] aspect-[1155/678] w-[54.125rem]
-            -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc]
+            className='relative left-[calc(50%-11rem)] aspect-[1155/678] w-[94.125rem]
+            -translate-x-1/2 rotate-[30deg] bg-gradient-to-r from-orange-600 to-[#e079b5]
              opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] -z-20'
              style={{
               clipPath:
@@ -68,14 +75,17 @@ export default function Home() {
           />
           </div>
           <div className="mx-auto z-20 max-w-2xl sm:text-center">
-            <h2 className="text-base font-semibold leading-7 text-indigo-600">
-              Your Interactive Document Companion
-            </h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-400 sm:text-6xl">
+            <div className="flex justify-center">
+              <h2 className="text-base px-2 font-semibold leading-7 border rounded-xl fr bg-white text-indigo-600">
+                Unlock Your Interactive Document Companion
+              </h2>
+            </div>
+            
+            <p className="mt-2 text-3xl font-bold tracking-tight text-black sm:text-6xl">
               Transform Your PDFs into Interactive Conversations
             </p>
 
-            <p className="mt-6 text-lg leading-6 text-gray-400">
+            <p className="mt-6 text-lg leading-6 sm:text-center text-black">
               Introducing {" "}
               <span className="font-bold text-indigo-600">Chat with PDF.</span>
               <br />
@@ -87,9 +97,18 @@ export default function Home() {
             </p>
           </div>
 
-          <Button asChild className="mt-10 bg-gradient-to-r from-gray-400 to-indigo-400">
-            <Link href="/sign-in">Get Started</Link>
-          </Button>
+          
+          <div className="flex space-x-4">
+            <Button asChild className="mt-10 rounded-xl text-white bg-gradient-to-r from-[#e079b5] to-indigo-400">
+              <Link href="/sign-in">Get Started</Link>
+            </Button>
+            {user && (
+              <Button variant="outline" asChild className="mt-10 ">
+                <Link href="/dashboard">Dashboard</Link>
+             </Button>
+            )}
+            
+          </div>
 
           
           </div>
@@ -105,14 +124,14 @@ export default function Home() {
               />
 
               <div aria-hidden="true" className="relative">
-                <div className="absolute bottom-0 -inset-x-32 bg-gradient-to-t from-gray-900/95 pt-[5%]"/>
+                <div className="absolute bottom-0 -inset-x-32 bg-gradient-to-t from-[#c18bc3] pt-[5%]"/>
               </div>
             </div>
           </div>
 
           <div className="px-3 pt-3">
             <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10
-            text-base leading-7 text-gray-400 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8">
+            text-base leading-7 text-gray-800 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8">
               {features.map(feature => (
                 <div key={feature.id} className="relative pl-9">
                   <dt className="inline font-semibold text-gray-900">

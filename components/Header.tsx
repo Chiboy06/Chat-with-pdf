@@ -6,7 +6,7 @@ import { FilePlus2 } from 'lucide-react'
 
 function Header() {
   return (
-    <div className='flex justify-between bg-white shadow-sm p-5 border-b'>
+    <div className='flex justify-between backdrop-opacity-10 backdrop-brightness-125 bg-white/50 shadow-sm backdrop-blur-sm p-5 border-b'>
         <Link
               href='/dashboard'
               className='text-2xl'

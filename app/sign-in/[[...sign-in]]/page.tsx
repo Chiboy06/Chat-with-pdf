@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 
 export default function SignInPage() {
   return (
-    <div className="grid w-full grow items-center px-4 sm:justify-center">
+    <div className="grid w-full grow items-center bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] px-4 sm:justify-center">
       <SignIn.Root>
         <Clerk.Loading>
           {(isGlobalLoading) => (
@@ -19,8 +19,8 @@ export default function SignInPage() {
               <SignIn.Step name="start">
                 <Card className="w-full shadow-2xl sm:w-96">
                   <CardHeader>
-                    <CardTitle>Sign in to Chat-with-PDF</CardTitle>
-                    <CardDescription>Welcome back! Please sign in to continue</CardDescription>
+                    <CardTitle className="text-center">Sign in to Chat-with-PDF</CardTitle>
+                    <CardDescription className="text-center">Welcome back! Please sign in to continue</CardDescription>
                   </CardHeader>
                   <CardContent className="grid gap-y-4">
                     <div className="grid grid-cols-2 gap-x-4">
@@ -32,7 +32,7 @@ export default function SignInPage() {
                                 <Icons.spinner className="size-4 animate-spin" />
                               ) : (
                                 <>
-                                  <Icons.gitHub className="mr-2 size-4" />
+                                  <Icons.gitHub className="mr-2 size-6" />
                                   GitHub
                                 </>
                               )
@@ -48,7 +48,7 @@ export default function SignInPage() {
                                 <Icons.spinner className="size-4 animate-spin" />
                               ) : (
                                 <>
-                                  <Icons.google className="mr-2 size-4" />
+                                  <Icons.google className="mr-2 size-6" />
                                   Google
                                 </>
                               )
@@ -73,7 +73,7 @@ export default function SignInPage() {
                   <CardFooter>
                     <div className="grid w-full gap-y-4">
                       <SignIn.Action submit asChild>
-                        <Button disabled={isGlobalLoading}>
+                        <Button className="bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] text-black font-semibold " disabled={isGlobalLoading}>
                           <Clerk.Loading>
                             {(isLoading) => {
                               return isLoading ? <Icons.spinner className="size-4 animate-spin" /> : 'Continue';
@@ -82,9 +82,9 @@ export default function SignInPage() {
                         </Button>
                       </SignIn.Action>
 
-                      <Button variant="link" size="sm" asChild>
+                      {/* <Button variant="link" size="sm" asChild>
                         <Link href="/sign-up">Don&apos;t have an account? Sign up</Link>
-                      </Button>
+                      </Button> */}
                     </div>
                   </CardFooter>
                 </Card>
