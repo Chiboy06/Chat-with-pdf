@@ -6,7 +6,7 @@ import "react-pdf/dist/Page/TextLayer.css";
 import { Document, Page, pdfjs } from "react-pdf";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
-import { Loader2Icon, RotateCw, ZoomInIcon, ZoomOutIcon } from "lucide-react";
+import { ChevronRight, ChevronLeft, Loader2Icon, RotateCw, ZoomInIcon, ZoomOutIcon } from "lucide-react";
 
 // We need to configure CORS
 // gsutil cors set cors.json gs://<app-name>.appspot.com
@@ -53,7 +53,7 @@ function PdfView({ url }: { url: string }) {
               }
             }}
           >
-            Previous
+            <ChevronLeft />
           </Button>
 
           <p className="flex items-center justify-center">
@@ -71,7 +71,7 @@ function PdfView({ url }: { url: string }) {
               }
             }}
           >
-            Next
+            <ChevronRight />
           </Button>
 
           <Button

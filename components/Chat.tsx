@@ -3,7 +3,7 @@
 import { FormEvent, useEffect, useRef, useState, useTransition } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Loader2Icon } from "lucide-react";
+import { Loader2Icon, SendHorizontal } from "lucide-react";
 // import ChatMessage from "./ChatMessage";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useUser } from "@clerk/nextjs";
@@ -11,6 +11,7 @@ import { collection, orderBy, query } from "firebase/firestore";
 import { db } from "@/firebase";
 import ChatMessage from "./ChatMessage";
 import { askQuestion } from "@/actions/askQuestion";
+import { toast } from "./ui/use-toast";
 // import { useToast } from "./ui/use-toast";
 
 export type Message = {
@@ -101,11 +102,11 @@ function Chat({ id }: { id: string }) {
       console.log("DEBUG", success, message);
 
       if (!success) {
-        // toast({
-        //   variant: "destructive",
-        //   title: "Error",
-        //   description: message,
-        // });
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: message,
+        });
 
         setMessages((prev) =>
           prev.slice(0, prev.length - 1).concat([
@@ -154,7 +155,7 @@ function Chat({ id }: { id: string }) {
 
       <form
         onSubmit={handleSubmit}
-        className="flex sticky bottom-0 space-x-2 p-5 bg-indigo-600/75"
+        className="flex sticky bottom-0 space-x-2 p-5 bg-[#e079b5]"
       >
         <Input
           placeholder="Ask a Question..."
@@ -162,11 +163,11 @@ function Chat({ id }: { id: string }) {
           onChange={(e) => setInput(e.target.value)}
         />
 
-        <Button type="submit" disabled={!input || isPending}>
+        <Button type="submit" className="bg-indigo-600" disabled={!input || isPending}>
           {isPending ? (
             <Loader2Icon className="animate-spin text-indigo-600" />
           ) : (
-            "Ask"
+            <SendHorizontal />
           )}
         </Button>
       </form>

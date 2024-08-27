@@ -18,7 +18,7 @@ import { auth } from "@clerk/nextjs/server";
 
 const model = new ChatGoogleGenerativeAI({
     apiKey: process.env.GEMINI_API_KEY,
-    modelName: "gemini-1.5-pro",
+    modelName: "gemini-1.5-flash",
     maxOutputTokens: 2048,
     safetySettings: [
         {
@@ -27,6 +27,7 @@ const model = new ChatGoogleGenerativeAI({
         },
     ],
 });
+// const model = new StreamingLLM(llm = modelDef);
 
 export const indexName = "nazadev";
 
@@ -228,8 +229,27 @@ const generateLangchainCompletion = async (docId: string, question: string) => {
       input: question,
     });
   
+  // const stream = await conversationalRetrievalChain.stream({
+  //   chat_history: chatHistory,
+  //     input: question,
+  // });
+
+  // let completeAnswer = '';
+
+  // for await (const chunk of stream) {
+  //   // console.log('stream --->', { chunk });
+  //   if (chunk.answer) {
+  //     console.log('answer -------<>', chunk.answer);
+  //     completeAnswer += chunk.answer;
+  //   }
+    
+  //   console.log('complete Answr', completeAnswer);
+    
+  //   return chunk.answer;
+  // };
+  
     // Print the result to the console
-    console.log(reply.answer);
+    // console.log('No reply');
     return reply.answer;
   };
   

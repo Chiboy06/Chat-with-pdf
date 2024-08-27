@@ -76,24 +76,24 @@ export default function Home() {
           </div>
           <div className="mx-auto z-20 max-w-2xl sm:text-center">
             <div className="flex justify-center">
-              <h2 className="text-base px-2 font-semibold leading-7 border rounded-xl fr bg-white text-indigo-600">
-                Unlock Your Interactive Document Companion
+              <h2 className="text-base px-2 font-semibold leading-7 border rounded-xl fr bg-white text-[#e079b5]">
+                Unlock Your Smart Interactive Document Companion
               </h2>
             </div>
             
             <p className="mt-2 text-3xl font-bold tracking-tight text-black sm:text-6xl">
-              Transform Your PDFs into Interactive Conversations
+              Your Smart Companion for Effortless Document Reading
             </p>
 
             <p className="mt-6 text-lg leading-6 sm:text-center text-black">
               Introducing {" "}
-              <span className="font-bold text-indigo-600">Chat with PDF.</span>
+              <span className="font-bold text-[#e079b5] animate-pulse">PDF Genie.</span>
               <br />
-              <br /> Upload your document, and our chatbot will answer questions, summarize content, and answer all your Qs.
-              Ideal for everyone, <span className="text-indigo-600">Chat with PDF</span>{" "}
-              turns static documents into {" "}
-              <span className="font-bold">dynamic conversations</span>,
-              enhancing productivity 10x fold effortlessly. 
+              <br /> Your intelligent companion for effortless document reading and analysis.
+              Powered by advanced AI technology, <span className="text-[#e079b5] font-semibold animate-pulse">PDF Genie</span>{" "}
+              transforms the way you interact with your PDFs {" "}
+              <span className="font-bold text-[#e079b5] animate-pulse">PDF Genie</span>,
+              is designed to enhancing productivity 10x fold effortlessly and document handling a breeze. 
             </p>
           </div>
 

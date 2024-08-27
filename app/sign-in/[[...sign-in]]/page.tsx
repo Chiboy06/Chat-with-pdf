@@ -19,7 +19,7 @@ export default function SignInPage() {
               <SignIn.Step name="start">
                 <Card className="w-full shadow-2xl sm:w-96">
                   <CardHeader>
-                    <CardTitle className="text-center">Sign in to Chat-with-PDF</CardTitle>
+                    <CardTitle className="text-center">Welcome to <span className="text-[#e079b5]">PDF Genie</span></CardTitle>
                     <CardDescription className="text-center">Welcome back! Please sign in to continue</CardDescription>
                   </CardHeader>
                   <CardContent className="grid gap-y-4">
