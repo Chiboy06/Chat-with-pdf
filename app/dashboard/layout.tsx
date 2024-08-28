@@ -1,7 +1,14 @@
 import Header from "@/components/Header"
 import { ClerkLoaded } from "@clerk/nextjs"
+import { auth } from "@clerk/nextjs/server";
+import SignInPage from "../sign-in/[[...sign-in]]/page";
 
-function DashboardLayout({ children }: { children: React.ReactNode }) {
+async function DashboardLayout({ children }: { children: React.ReactNode }) {
+  auth().protect();
+  const { userId } = await auth();
+
+  if (!userId) return <SignInPage/>
+
   return (
     <ClerkLoaded>
         <div className="flex-1 flex bg-gradient-to-b from-gray-200 to-orange-200 flex-col h-screen ">

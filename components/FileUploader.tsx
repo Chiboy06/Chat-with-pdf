@@ -23,26 +23,29 @@ function FileUploader() {
     }, [fileId, router]);
 
     const onDrop = useCallback(async (acceptedFiles: File[]) => {
-        // Do something with the files
-        const file = acceptedFiles[0];
-
-        if (file) {
-            if (!isOverFileLimit && !filesLoading) {
+      // Do something with the files
+      const file = acceptedFiles[0];
+  
+      if (file) {
+          if (!isOverFileLimit && !filesLoading) {
               await handleUpload(file);
-            } else {
-              toast({
-                variant: "destructive",
-                title: "Free Plan File Limit Reached",
-                description:
-                  `You have reached the maximum number of files allowed for your account. Please ${<UpgradeButton/>} to add more documents.`,
-              });
-            }
           } else {
-            // do nothing...
-            // toast...
+              toast({
+                  variant: "destructive",
+                  title: "Free Plan File Limit Reached",
+                  description:
+                    `You have reached the maximum number of files allowed for your account. Please upgrade to add more documents.`,
+              });
           }
-        },
-    }, [handleUpload]);
+      } else {
+          // Optionally, you can leave the else block empty or add a toast notification
+          toast({
+              variant: "default",
+              title: "No File Selected",
+              description: "Please select a file to upload.",
+          });
+      }
+  }, [handleUpload, isOverFileLimit, filesLoading, toast]);
 
     const statusIcons: {
         [key in StatusText]: JSX.Element;
@@ -67,6 +70,7 @@ function FileUploader() {
         }
     });
 
+    // @ts-ignore
     const uploadInProgress = progress != null && progress >= 0 && progress <= 100;
 
     return (
