@@ -1,11 +1,16 @@
+'use client'
+
 import { SignedIn, UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
 import React from 'react'
 import { Button } from './ui/button'
 import { FilePlus2 } from 'lucide-react'
 import UpgradeButton from './UpgradeButton'
+import { useMediaQuery } from 'react-responsive'
+
 
 function Header() {
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
   return (
     <div className='flex justify-between backdrop-opacity-10 backdrop-brightness-125 bg-white/50 shadow-sm backdrop-blur-sm p-5 border-b'>
         <Link
@@ -21,9 +26,16 @@ function Header() {
                     <Link href='/dashboard/upgrade'>Pricing</Link>   
                 </Button>
                 
-                <Button asChild variant="outline" className='border-indigo-600'>
-                    <Link href='/dashboard'>My Documents</Link>   
-                </Button>
+                {isTabletOrMobile ? (
+                    <Button asChild variant="outline" className='border-indigo-600'>
+                        <Link href='/dashboard'>My Docs</Link>   
+                    </Button>
+                ) : (
+                    <Button asChild variant="outline" className='border-indigo-600'>
+                        <Link href='/dashboard'>My Documents</Link>   
+                    </Button> 
+                )}
+                
                 
                 <Button asChild variant="outline" className='border-indigo-600'>
                     <Link href='/dashboard/upload'>

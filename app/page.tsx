@@ -99,9 +99,11 @@ export default function Home() {
 
           
           <div className="flex space-x-4">
-            <Button asChild className="mt-10 rounded-xl text-white bg-gradient-to-r from-[#e079b5] to-indigo-400">
-              <Link href="/sign-in">Get Started</Link>
-            </Button>
+            {!user && (
+              <Button asChild className="mt-10 rounded-xl text-white bg-gradient-to-r from-[#e079b5] to-indigo-400">
+                <Link href="/sign-in">Get Started</Link>
+              </Button>
+            )}
             {user && (
               <Button variant="outline" asChild className="mt-10 ">
                 <Link href="/dashboard">Dashboard</Link>

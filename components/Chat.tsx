@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useRef, useState, useTransition } from "react";
 import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+// import { Input } from "./ui/input";
 import { Loader2Icon, SendHorizontal } from "lucide-react";
 // import ChatMessage from "./ChatMessage";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -13,6 +13,8 @@ import ChatMessage from "./ChatMessage";
 import { askQuestion } from "@/actions/askQuestion";
 import { toast } from "./ui/use-toast";
 // import { useToast } from "./ui/use-toast";
+import { Textarea } from "@/components/ui/textarea"
+
 
 export type Message = {
   id?: string;
@@ -157,7 +159,12 @@ function Chat({ id }: { id: string }) {
         onSubmit={handleSubmit}
         className="flex sticky bottom-0 space-x-2 p-5 bg-[#e079b5]"
       >
-        <Input
+        {/* <Input
+          placeholder="Ask a Question..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        /> */}
+        <Textarea 
           placeholder="Ask a Question..."
           value={input}
           onChange={(e) => setInput(e.target.value)}

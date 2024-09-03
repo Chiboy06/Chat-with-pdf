@@ -42,7 +42,7 @@ function ChatMessage({ message }: { message: Message }) {
       </div>
 
       <div
-        className={`chat-bubble prose ${isHuman && "bg-indigo-600 text-white overflow-x-auto"}`}
+        className={`chat-bubble prose p-0 ${isHuman && "bg-indigo-600 text-white overflow-x-auto"}`}
       >
         {message.message === "Thinking..." ? (
           <div className="flex items-center justify-center">
@@ -50,10 +50,11 @@ function ChatMessage({ message }: { message: Message }) {
           </div>
         ) : (
             <div>
-              <div className="mb-3 bg-transparent py-4 cursor-pointer px-2 flex items-end">
+              <div className={`flex justify-between items-center font-semibold ${isHuman ? "bg-indigo-800 p-2 cursor-pointer " : "bg-gray-700 p-2 cursor-pointer text-gray-200"}`}>
+                <h1>PDF Genie</h1>
                 <Clipboard size={20} onClick={onCopy}/>
               </div>
-              <Markdown className="overflow-x-auto">
+              <Markdown className="overflow-x-auto px-5">
                 {message.message}
               </Markdown>
             </div>
