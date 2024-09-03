@@ -28,7 +28,7 @@ function Header() {
                 
                 {isTabletOrMobile ? (
                     <Button asChild variant="outline" className='border-indigo-600'>
-                        <Link href='/dashboard'>My Docs</Link>   
+                        <Link href='/dashboard'>Docs</Link>   
                     </Button>
                 ) : (
                     <Button asChild variant="outline" className='border-indigo-600'>
