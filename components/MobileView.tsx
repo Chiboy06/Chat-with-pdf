@@ -36,7 +36,7 @@ function MobileView({ url }: { url: string }) {
   return (
       <Sheet>
         <div className="w-full flex justify-center items-center">
-          <SheetTrigger style={{ width: `${width}px` }}>
+          <SheetTrigger style={{ width: `${width}px`, position: 'relative', bottom: '0' }}>
             <div className='text-center font-bold text-2xl'>View PDF</div>
           </SheetTrigger>
         </div>

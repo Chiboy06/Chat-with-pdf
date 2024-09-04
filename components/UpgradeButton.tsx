@@ -24,7 +24,7 @@ function UpgradeButton() {
     return (
       <Button asChild variant="default" className="border-indigo-600">
         <Link href="/dashboard/upgrade">
-          Upgrade <StarIcon className="ml-3 fill-indigo-600 text-white" />
+          Upgrade <StarIcon className="ml-2 md:ml-3 fill-indigo-600 text-white" />
         </Link>
       </Button>
     );
@@ -48,7 +48,7 @@ function UpgradeButton() {
       ) : (
         <p>
           <span className="font-extrabold">PRO </span>
-          Account
+          {/* Account */}
         </p>
       )}
     </Button>

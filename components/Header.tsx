@@ -15,7 +15,7 @@ function Header() {
     <div className='flex justify-between backdrop-opacity-10 backdrop-brightness-125 bg-white/50 shadow-sm backdrop-blur-sm p-5 border-b'>
         <Link
               href='/dashboard'
-              className='text-2xl'
+              className='text-xl font-semibold  md:text-2xl'
         >
             PDF <span className="text-[#e079b5]">Genie</span>      
         </Link>
@@ -31,7 +31,7 @@ function Header() {
                         <Link href='/dashboard'>Docs</Link>   
                     </Button>
                 ) : (
-                    <Button asChild variant="outline" className='border-indigo-600'>
+                    <Button asChild variant="outline" className='border-indigo-600 p-2'>
                         <Link href='/dashboard'>My Documents</Link>   
                     </Button> 
                 )}

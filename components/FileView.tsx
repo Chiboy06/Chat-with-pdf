@@ -13,7 +13,10 @@ function FileView({ url }: { url: string }) {
     <>
         {
             Mobile ? (
-            <MobileView url={url} />
+                <div className='w-full h-12'>
+                    <MobileView url={url} />    
+                </div>
+            
             ) : (
             <div className="col-span-5 lg:col-span-3 bg-gray-100 border-r-2 lg:border-indigo-600 lg:-order-1 overflow-auto">
                 {/* PDFView */}
