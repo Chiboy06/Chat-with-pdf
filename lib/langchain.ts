@@ -16,6 +16,16 @@ import { adminDb } from "../firebaseAdmin";
 import { auth } from "@clerk/nextjs/server";
 
 
+interface GeminiModelConfig {
+  apiKey: string;
+  modelName: string;
+  maxOutputTokens: number;
+  safetySettings: Array<{
+    category: HarmCategory;
+    threshold: HarmBlockThreshold;
+  }>;
+}
+
 const model = new ChatGoogleGenerativeAI({
     apiKey: process.env.GEMINI_API_KEY,
     modelName: "gemini-1.5-flash",

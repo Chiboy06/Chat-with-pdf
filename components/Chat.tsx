@@ -3,7 +3,7 @@
 import { FormEvent, useEffect, useRef, useState, useTransition } from "react";
 import { Button } from "./ui/button";
 // import { Input } from "./ui/input";
-import { Loader2Icon, SendHorizontal } from "lucide-react";
+import { Loader, Loader2Icon, SendHorizontal } from "lucide-react";
 // import ChatMessage from "./ChatMessage";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useUser } from "@clerk/nextjs";
@@ -14,6 +14,9 @@ import { askQuestion } from "@/actions/askQuestion";
 import { toast } from "./ui/use-toast";
 // import { useToast } from "./ui/use-toast";
 import { Textarea } from "@/components/ui/textarea"
+import Recorder, { mimeType } from "./Recorder";
+import SpeechRecorder from "./SpeechRecorder";
+import { CircleLoader } from "react-spinners";
 
 
 export type Message = {
@@ -25,7 +28,9 @@ export type Message = {
 
 function Chat({ id }: { id: string }) {
   const { user } = useUser();
+
 //   const { toast } = useToast();
+
 
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
@@ -50,7 +55,7 @@ function Chat({ id }: { id: string }) {
   useEffect(() => {
     if (!snapshot) return;
 
-    console.log("Updated snapshot", snapshot.docs);
+    // console.log("Updated snapshot", snapshot.docs);
 
     // get second last message to check if the AI is thinking
     const lastMessage = messages.pop();
@@ -122,6 +127,52 @@ function Chat({ id }: { id: string }) {
       }
     });
   };
+  const handleTranscript = async (text: string) => {
+    // e.preventDefault();
+
+    const q = text;
+
+    setInput("");
+
+    // Optimistic UI update
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: "human",
+        message: q,
+        createdAt: new Date(),
+      },
+      {
+        role: "ai",
+        message: "Thinking...",
+        createdAt: new Date(),
+      },
+    ]);
+
+    startTransition(async () => {
+      const { success, message } = await askQuestion(id, q);
+
+      console.log("DEBUG", success, message);
+
+      if (!success) {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: message,
+        });
+
+        setMessages((prev) =>
+          prev.slice(0, prev.length - 1).concat([
+            {
+              role: "ai",
+              message: `Whoops... ${message}`,
+              createdAt: new Date(),
+            },
+          ])
+        );
+      }
+    });
+  };
 
   return (
     <div className="flex flex-col h-full overflow-scroll">
@@ -131,7 +182,9 @@ function Chat({ id }: { id: string }) {
 
         {loading ? (
           <div className="flex items-center justify-center">
-            <Loader2Icon className="animate-spin h-20 w-20 text-indigo-600 mt-20" />
+            <CircleLoader className="mt-20" size={90} color="#4f46e5" />
+
+            {/* <Loader2Icon className="animate-spin h-20 w-20 text-indigo-600 mt-20" /> */}
           </div>
         ) : (
           <div className="p-5">
@@ -170,6 +223,7 @@ function Chat({ id }: { id: string }) {
           onChange={(e) => setInput(e.target.value)}
         />
 
+          <SpeechRecorder onTranscriptReceived={handleTranscript}/>
         <Button type="submit" className="bg-indigo-600" disabled={!input || isPending}>
           {isPending ? (
             <Loader2Icon className="animate-spin text-indigo-600" />
@@ -178,6 +232,8 @@ function Chat({ id }: { id: string }) {
           )}
         </Button>
       </form>
+
+      
     </div>
   );
 }

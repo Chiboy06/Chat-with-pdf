@@ -4,7 +4,7 @@ import { SignedIn, UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
 import React from 'react'
 import { Button } from './ui/button'
-import { FilePlus2 } from 'lucide-react'
+import { FilePlus2, FileStack } from 'lucide-react'
 import UpgradeButton from './UpgradeButton'
 import { useMediaQuery } from 'react-responsive'
 
@@ -28,7 +28,10 @@ function Header() {
                 
                 {isTabletOrMobile ? (
                     <Button asChild variant="outline" className='border-indigo-600'>
-                        <Link href='/dashboard'>Docs</Link>   
+                        <Link href='/dashboard'>
+                            <FileStack className=" fill-indigo-600 text-white" />
+                        </Link>   
+                        
                     </Button>
                 ) : (
                     <Button asChild variant="outline" className='border-indigo-600 p-2'>

@@ -4,8 +4,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from '@/components/ui/toaster'
 
 export const metadata: Metadata = {
-  title: "chat-with-pdf",
-  description: "Chat with PDF",
+  title: "Pdf-genie ",
+  description: "Chat with PDF, Pdf Genie, pdf genie",
 };
 
 export default function RootLayout({

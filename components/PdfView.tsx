@@ -16,6 +16,7 @@ import { ChevronRight, ChevronLeft, Loader2Icon, RotateCw, ZoomInIcon, ZoomOutIc
 // run >>> // gsutil cors set cors.json gs://chat-with-pdf-322a0.appspot.com
 // https://firebase.google.com/docs/storage/web/download-files#cors_configuration
 
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 function PdfView({ url }: { url: string }) {

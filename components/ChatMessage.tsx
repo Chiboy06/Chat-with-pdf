@@ -2,10 +2,11 @@
 
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
-import { BotIcon, Clipboard, Loader2Icon } from "lucide-react";
+import { BotIcon, Clipboard, Loader, Loader2Icon } from "lucide-react";
 import Markdown from "react-markdown";
 import { Message } from "./Chat";
 import { toast } from "./ui/use-toast";
+import { BeatLoader, PulseLoader } from "react-spinners"
 
 function ChatMessage({ message }: { message: Message }) {
   const isHuman = message.role === "human";
@@ -45,8 +46,9 @@ function ChatMessage({ message }: { message: Message }) {
         className={`chat-bubble prose p-0 ${isHuman && "bg-indigo-600 text-white overflow-x-auto"}`}
       >
         {message.message === "Thinking..." ? (
-          <div className="flex items-center justify-center">
-            <Loader2Icon className="animate-spin h-5 w-5 text-white" />
+          <div className="flex items-center m-3 justify-center">
+            {/* <Loader /> */}
+            <PulseLoader size={15} color="#fff" margin={4} className="my-2 text-white" />
           </div>
         ) : (
             <div>
@@ -54,7 +56,7 @@ function ChatMessage({ message }: { message: Message }) {
                 <h1>PDF Genie</h1>
                 <Clipboard size={20} onClick={onCopy}/>
               </div>
-              <Markdown className="overflow-x-auto px-5">
+              <Markdown className="overflow-x-auto px-5 py-3">
                 {message.message}
               </Markdown>
             </div>

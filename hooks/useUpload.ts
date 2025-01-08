@@ -11,9 +11,9 @@ import { v4 as uuidv4 } from "uuid"
 
 export enum StatusText {
     UPLOADING = "Uploading file...",
-    UPLOADED = "File uplooaded successfully",
+    UPLOADED = "File uploaded successfully",
     SAVING = "Saving file to database.....",
-    GENERATING = "Generating AI Embeddings, This will only take a few seconds ..."
+    GENERATING = "Generating AI Embeddings / Response, This will only take a few seconds ..."
 }
 
 export type Status = StatusText[keyof StatusText];
